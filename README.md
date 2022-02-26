@@ -9,7 +9,7 @@ Todd Moneypenny
 Document what works
 
 USAGE:
-    main [OPTIONS] <SUBCOMMAND>
+    rmd [OPTIONS] <SUBCOMMAND>
 
 OPTIONS:
     -g, --group      Group commands together
