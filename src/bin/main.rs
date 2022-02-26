@@ -1,7 +1,6 @@
 use std::error::Error;
 
 use clap::{Parser, Subcommand};
-use rmd;
 
 #[derive(Parser)]
 #[clap(author = "Todd Moneypenny", version = "0.1.0")]

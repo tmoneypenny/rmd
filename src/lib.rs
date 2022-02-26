@@ -9,24 +9,24 @@ struct MdReader {
 
 impl MdReader {
     fn new() -> MdReader {
-        return MdReader {
+        MdReader {
             lines_read: 0,
             line_buf: Vec::<String>::new(),
-        };
+        }
     }
 
-    fn generate_ind_md(&self) -> () {
+    fn generate_ind_md(&self) {
         println!("Lines read: {:?}", self.line_buf);
         self.line_buf
             .iter()
             .for_each(|l| println!("```sh\n{}\n```", l));
     }
 
-    fn generate_group_md(&self) -> () {
+    fn generate_group_md(&self) {
         let mut s: String = "```sh\n".to_string();
         self.line_buf
             .iter()
-            .for_each(|l| s.push_str(&format!("{}\n", l).to_string()));
+            .for_each(|l| s.push_str(&format!("{}\n", l)));
         s.push_str("```");
         println!("{}", s);
     }
