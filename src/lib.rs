@@ -16,7 +16,6 @@ impl MdReader {
     }
 
     fn generate_ind_md(&self) {
-        println!("Lines read: {:?}", self.line_buf);
         self.line_buf
             .iter()
             .for_each(|l| println!("```sh\n{}\n```", l));
