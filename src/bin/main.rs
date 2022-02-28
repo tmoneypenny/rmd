@@ -16,10 +16,10 @@ struct Cli {
 
 #[derive(Subcommand)]
 enum Commands {
-    /// Document last N commands
+    /// Document last N markers
     #[clap(parse(try_from_str))]
     Last { lines: Option<usize> },
-    /// Set a marker to save the last command
+    /// Set a marker to save the last N commands
     S { save: Option<usize> },
 }
 
@@ -31,6 +31,7 @@ fn main() -> Result<(), Box<dyn Error>> {
         false => false,
     };
 
+    let cmd_name = std::env::args().next().unwrap();
     let hist_file =
         std::env::var_os("HISTFILE").unwrap_or_else(|| std::ffi::OsString::from(".zsh_history"));
     #[allow(deprecated)]
@@ -38,13 +39,10 @@ fn main() -> Result<(), Box<dyn Error>> {
     let path = home_dir.join(&hist_file);
 
     match &cli.command {
-        Commands::Last { lines } => {
-            println!("Documenting last {:?} commands", &lines.unwrap_or(10));
-            match lines {
-                Some(l) => rmd::run(*l, path, group)?,
-                None => rmd::run(10, path, group)?,
-            }
-        }
+        Commands::Last { lines } => match lines {
+            Some(l) => rmd::run(cmd_name, *l, path, group)?,
+            None => rmd::run(cmd_name, 5, path, group)?,
+        },
         Commands::S { save: _ } => (),
     }
     Ok(())
