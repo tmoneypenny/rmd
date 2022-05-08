@@ -2,7 +2,7 @@
 
 > Document what works.
 
-rmd is a tiny tool to document history as markdown. Simply run `rmd` to generate save previous commands as markdown- that's it!
+rmd is a tiny tool to document history as markdown. Simply run `rmd` to save previous commands as markdown- that's it!
 
 ### Example
 
