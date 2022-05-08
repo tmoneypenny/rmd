@@ -1,4 +1,3 @@
-use easy_reader::EasyReader;
 use regex::Regex;
 use skim::prelude::*;
 use skim::SkimItem;
